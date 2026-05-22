@@ -1,0 +1,66 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: public/images
+public_folder: /images
+
+locale: he
+
+collections:
+  # ─── Blog Posts ────────────────────────────────────────────────────────────
+  - name: posts
+    label: פוסטים בבלוג
+    label_singular: פוסט
+    folder: content/posts
+    create: true
+    slug: "{{slug}}"
+    extension: mdx
+    format: frontmatter
+    fields:
+      - { label: "כותרת", name: title, widget: string }
+      - { label: "תאריך", name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "תקציר", name: excerpt, widget: text }
+      - { label: "תמונה ראשית", name: featuredImage, widget: image, required: false }
+      - { label: "תוכן", name: body, widget: markdown }
+
+  # ─── Books ─────────────────────────────────────────────────────────────────
+  - name: books-data
+    label: ספרים
+    files:
+      - name: books
+        label: רשימת הספרים
+        file: content/data/books.json
+        fields:
+          - name: items
+            label: ספרים
+            widget: list
+            label_singular: ספר
+            fields:
+              - { label: "כותרת", name: title, widget: string }
+              - { label: "שנה", name: year, widget: string }
+              - { label: "תמונת עטיפה", name: image, widget: image }
+              - { label: "תיאור", name: desc, widget: text }
+              - { label: "קטגוריה", name: tag, widget: select, options: ["מחקר ועיון", "ספר מחקר", "ספרי ספורט ומשחקים", "ספרי ילדים"] }
+              - { label: "קריאה חינם?", name: free, widget: boolean, default: false, required: false }
+              - { label: "קישור לקריאה חינם", name: freeUrl, widget: string, required: false }
+
+  # ─── Press ─────────────────────────────────────────────────────────────────
+  - name: press-data
+    label: עיתונות
+    files:
+      - name: press
+        label: כתבות ופרסומים
+        file: content/data/press.json
+        fields:
+          - name: items
+            label: פריטי עיתונות
+            widget: list
+            label_singular: כתבה
+            fields:
+              - { label: "כלי תקשורת", name: outlet, widget: string }
+              - { label: "כותרת הכתבה", name: title, widget: string }
+              - { label: "תיאור קצר", name: desc, widget: text }
+              - { label: "סוג", name: type, widget: select, options: ["כתבה", "ראיון", "ריאיון טלוויזיה", "ריאיון רדיו"] }
+              - { label: "תמונה", name: image, widget: image, required: false }
+              - { label: "קישור לכתבה", name: url, widget: string, required: false }

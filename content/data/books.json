@@ -1,0 +1,94 @@
+{
+  "items": [
+    {
+      "title": "כולם ידעו ואף אחד לא עשה דבר",
+      "year": "2026",
+      "image": "/images/book-koolam-yadoo.jpg",
+      "desc": "הספר מתעד 13 ראיונות עם ספורטאים ומציג בפני הקורא את הספורטאי הישגי, קורבן הזניחה והמאמנים המנצלים. החשיפה היא הצעד הראשון לשינוי.",
+      "tag": "מחקר ועיון",
+      "free": false,
+      "freeUrl": ""
+    },
+    {
+      "title": "אימפריה",
+      "year": "2010",
+      "image": "/images/book-imperia.jpg",
+      "desc": "תיעוד שנת מחקר בלונדון בין קהילות אוהדי כדורגל. הספר עוסק בזהות, שייכות, ופנאטיות ספורטיבית – מפרספקטיבה אנתרופולוגית.",
+      "tag": "ספר מחקר",
+      "free": true,
+      "freeUrl": "https://shlomitguy.co.il/?p=48"
+    },
+    {
+      "title": "לא טריוויאלי – 207 שאלות על ספורט וחברה",
+      "year": "2022",
+      "image": "/images/book-lo-trivialit.jpg",
+      "desc": "משחק טריוויה ייחודי על ספורט וחברה – 207 שאלות מרתקות שחוצות את גבולות ספורט ונוגעות בחיים עצמם.",
+      "tag": "ספרי ספורט ומשחקים",
+      "free": false,
+      "freeUrl": ""
+    },
+    {
+      "title": "טווחי תנועה ויצירתיות אצל ילדים",
+      "year": "2019",
+      "image": "https://shlomitguy.co.il/wp-content/uploads/2019/10/WhatsApp-Image-2019-10-27-at-09.45.01-36x36.jpeg",
+      "desc": "ספר עיון לילדים ולהורים על פיתוח יצירתיות תנועתית – כיצד משחק חופשי ותנועה מגוונת מפתחים את הילד.",
+      "tag": "ספרי ילדים",
+      "free": false,
+      "freeUrl": ""
+    },
+    {
+      "title": "לילי ולילה",
+      "year": "2024",
+      "image": "/images/book-liliy-ve-layla.jpg",
+      "desc": "ספר ילדים מקסים מהוצאת רסיס נהרה.",
+      "tag": "ספרי ילדים",
+      "free": false,
+      "freeUrl": ""
+    },
+    {
+      "title": "לומדים אנגלית",
+      "year": "2024",
+      "image": "/images/book-lomdim-anglit.jpg",
+      "desc": "ספר לימודי מהוצאת רסיס נהרה.",
+      "tag": "ספרי ילדים",
+      "free": false,
+      "freeUrl": ""
+    },
+    {
+      "title": "כסף וזמן",
+      "year": "2025",
+      "image": "/images/book-money-time.jpg",
+      "desc": "ספר מהוצאת רסיס נהרה.",
+      "tag": "ספרי ילדים",
+      "free": false,
+      "freeUrl": ""
+    },
+    {
+      "title": "ויקיפדיה",
+      "year": "2025",
+      "image": "/images/book-viko-pedia.jpg",
+      "desc": "ספר מהוצאת רסיס נהרה.",
+      "tag": "ספרי ילדים",
+      "free": false,
+      "freeUrl": ""
+    },
+    {
+      "title": "ילדים טובים משחקים כדורגל",
+      "year": "2025",
+      "image": "/images/book-yaldim-tovim-messahakim-caduregel.jpg",
+      "desc": "ספר ילדים על כדורגל, חברות וערכי ספורט מהוצאת רסיס נהרה.",
+      "tag": "ספרי ילדים",
+      "free": false,
+      "freeUrl": ""
+    },
+    {
+      "title": "ירוק עולה לכיתה א'",
+      "year": "2025",
+      "image": "/images/book-yarok-ole-lekita-alef.jpg",
+      "desc": "ספר ילדים מהוצאת רסיס נהרה.",
+      "tag": "ספרי ילדים",
+      "free": false,
+      "freeUrl": ""
+    }
+  ]
+}
