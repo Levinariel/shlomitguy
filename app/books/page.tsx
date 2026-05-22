@@ -5,13 +5,61 @@ import { getBooks } from "@/lib/data";
 export const metadata: Metadata = {
   title: 'הוצאת רסיס נהרה | ד"ר שלומית גיא',
   description: 'ספריה של הוצאת רסיס נהרה מבית שלומית גיא – ספרי ספורט, מחקר וספרי ילדים.',
+  alternates: { canonical: "https://rasisnahara.netlify.app/books" },
 };
+
+const bookSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    name: "כולם ידעו ואף אחד לא עשה דבר",
+    author: { "@type": "Person", name: "ד\"ר שלומית גיא", url: "https://rasisnahara.netlify.app/about" },
+    publisher: { "@type": "Organization", name: "הוצאת רסיס נהרה", url: "https://rasisnahara.netlify.app" },
+    datePublished: "2026",
+    inLanguage: "he",
+    image: "https://rasisnahara.netlify.app/images/book-koolam-yadoo.jpg",
+    description: "הספר מתעד 13 ראיונות עם ספורטאים ומציג את הספורטאי ההישגי, קורבן הזניחה והמאמנים המנצלים. מבוסס על מחקר עומק של 5 שנים (2020–2025) ו-27 ראיונות.",
+    genre: ["מחקר", "ספורט", "חברה"],
+    url: "https://rasisnahara.netlify.app/books",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    name: "אימפריה",
+    alternateName: "Empire",
+    author: { "@type": "Person", name: "ד\"ר שלומית גיא", url: "https://rasisnahara.netlify.app/about" },
+    publisher: { "@type": "Organization", name: "הוצאת רסיס נהרה", url: "https://rasisnahara.netlify.app" },
+    datePublished: "2010",
+    inLanguage: "he",
+    image: "https://rasisnahara.netlify.app/images/book-imperia.jpg",
+    description: "תיעוד שנת מחקר שטח בלונדון בין קהילות אוהדי כדורגל. הספר עוסק בזהות, שייכות ופנאטיות ספורטיבית. זכה בתואר ספר הספורט של השנה מטעם גלובס.",
+    genre: ["ספר מחקר", "אנתרופולוגיה", "ספורט"],
+    url: "https://rasisnahara.netlify.app/books",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    name: "לא טריוויאלי – 207 שאלות על ספורט וחברה",
+    author: { "@type": "Person", name: "ד\"ר שלומית גיא", url: "https://rasisnahara.netlify.app/about" },
+    publisher: { "@type": "Organization", name: "הוצאת רסיס נהרה", url: "https://rasisnahara.netlify.app" },
+    datePublished: "2022",
+    inLanguage: "he",
+    image: "https://rasisnahara.netlify.app/images/book-lo-trivialit.jpg",
+    description: "משחק טריוויה ייחודי על ספורט וחברה – 207 שאלות מרתקות שחוצות את גבולות ספורט ונוגעות בחיים עצמם.",
+    genre: ["ספרי ספורט ומשחקים"],
+    url: "https://rasisnahara.netlify.app/books",
+  },
+];
 
 export default function BooksPage() {
   const books = getBooks();
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(bookSchemas) }}
+      />
       {/* Publishing house hero */}
       <div className="mb-12 rounded-2xl overflow-hidden relative bg-[var(--color-navy)] text-white">
         <div

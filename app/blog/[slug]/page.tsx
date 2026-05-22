@@ -20,6 +20,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${post.title} | ד"ר שלומית גיא`,
     description: post.excerpt,
+    alternates: { canonical: `https://rasisnahara.netlify.app/blog/${slug}` },
+    openGraph: {
+      type: "article",
+      publishedTime: post.date,
+      authors: ["ד\"ר שלומית גיא"],
+      images: post.featuredImage
+        ? [{ url: post.featuredImage, alt: post.title }]
+        : undefined,
+    },
   };
 }
 
@@ -28,8 +37,43 @@ export default async function BlogPostPage({ params }: Props) {
   const post = await getPost(slug);
   if (!post) notFound();
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    url: `https://rasisnahara.netlify.app/blog/${slug}`,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: "ד\"ר שלומית גיא",
+      url: "https://rasisnahara.netlify.app/about",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "הוצאת רסיס נהרה",
+      url: "https://rasisnahara.netlify.app",
+    },
+    image: post.featuredImage
+      ? `https://rasisnahara.netlify.app${post.featuredImage}`
+      : "https://rasisnahara.netlify.app/images/profile-main-jpg.JPG",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://rasisnahara.netlify.app/blog/${slug}`,
+    },
+    inLanguage: "he",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "p:first-of-type"],
+    },
+  };
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <Link
         href="/blog"
         className="text-sm text-[var(--color-navy)] hover:underline mb-8 block"

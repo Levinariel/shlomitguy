@@ -6,6 +6,7 @@ import { getAllPosts } from "@/lib/posts";
 export const metadata: Metadata = {
   title: 'בלוג | ד"ר שלומית גיא',
   description: "מאמרים ומחשבות על ספורט, חברה, חינוך ואלימות מנקודת מבט מחקרית.",
+  alternates: { canonical: "https://rasisnahara.netlify.app/blog" },
 };
 
 export default async function BlogPage() {

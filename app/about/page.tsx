@@ -5,6 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: 'אודות | ד"ר שלומית גיא',
   description: 'ד"ר שלומית גיא – חוקרת, סופרת ומרצה בתחום ספורט וחברה. קראו על הרקע האקדמי, המחקרים והפעילות שלה.',
+  alternates: { canonical: "https://rasisnahara.netlify.app/about" },
 };
 
 const timeline = [

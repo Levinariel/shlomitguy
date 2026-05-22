@@ -1,7 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import BlogCard from "@/components/BlogCard";
 import { getRecentPosts } from "@/lib/posts";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "https://rasisnahara.netlify.app" },
+};
 
 export default async function Home() {
   const recentPosts = await getRecentPosts(3);

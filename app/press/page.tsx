@@ -5,6 +5,7 @@ import { getPressItems } from "@/lib/data";
 export const metadata: Metadata = {
   title: 'עיתונות | ד"ר שלומית גיא',
   description: 'כיסוי תקשורתי של ד"ר שלומית גיא בהארץ, גלובס, ynet, ערוץ הספורט, רשת ועוד.',
+  alternates: { canonical: "https://rasisnahara.netlify.app/press" },
 };
 
 const typeColors: Record<string, string> = {

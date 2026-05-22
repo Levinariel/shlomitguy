@@ -4,6 +4,7 @@ import SectionHeading from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: 'הרצאות | ד"ר שלומית גיא',
   description: 'הרצאות וסמינרים של ד"ר שלומית גיא למנהלים, מאמנים וארגוני ספורט. מניעת אלימות, חינוך וספורט, מנהיגות.',
+  alternates: { canonical: "https://rasisnahara.netlify.app/lectures" },
 };
 
 const topics = [
