@@ -1,6 +1,8 @@
 import { getAllPosts } from "@/lib/posts";
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 const BASE = "https://rasisnahara.netlify.app";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
