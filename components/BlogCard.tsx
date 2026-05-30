@@ -10,31 +10,34 @@ interface Props {
 
 export default function BlogCard({ slug, title, date, excerpt, featuredImage }: Props) {
   return (
-    <article className="bg-white rounded-xl shadow-sm border border-[var(--color-surface)] overflow-hidden hover:shadow-md transition-shadow group">
-      {featuredImage && (
-        <div className="overflow-hidden h-44">
-          <img
-            src={featuredImage}
-            alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        </div>
-      )}
-      <div className="p-5">
-        <time className="text-xs text-[var(--color-muted)] mb-2 block">{date}</time>
-        <h3 className="font-bold text-[var(--color-navy)] text-lg mb-2 leading-snug">
-          <Link href={`/blog/${slug}`} className="hover:underline">
-            {title}
-          </Link>
+    <article className="group flex flex-col">
+      <Link href={`/blog/${slug}`} className="block">
+        {featuredImage && (
+          <div className="overflow-hidden rounded-md mb-4 aspect-[3/2] bg-[var(--color-surface)]">
+            <img
+              src={featuredImage}
+              alt={title}
+              loading="lazy"
+              className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+            />
+          </div>
+        )}
+        <time className="text-xs font-medium uppercase tracking-wider text-[var(--color-muted)]">
+          {date}
+        </time>
+        <h3 className="font-serif text-xl font-bold text-[var(--color-ink)] mt-1.5 mb-2 leading-snug group-hover:text-[var(--color-accent)] transition-colors">
+          {title}
         </h3>
-        <p className="text-sm text-[var(--color-fg)] opacity-75 leading-relaxed line-clamp-3">{excerpt}</p>
-        <Link
-          href={`/blog/${slug}`}
-          className="mt-4 inline-block text-sm font-semibold text-[var(--color-navy)] hover:underline"
-        >
-          המשך קריאה &larr;
-        </Link>
-      </div>
+      </Link>
+      <p className="text-sm text-[var(--color-muted)] leading-relaxed line-clamp-3">
+        {excerpt}
+      </p>
+      <Link
+        href={`/blog/${slug}`}
+        className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-accent)] hover:gap-2 transition-all"
+      >
+        המשך קריאה <span aria-hidden>&larr;</span>
+      </Link>
     </article>
   );
 }

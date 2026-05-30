@@ -1,49 +1,96 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #FAFAF8;
-  --color-fg: #1A1A1A;
-  --color-navy: #1B3A5C;
-  --color-navy-light: #2A537E;
-  --color-surface: #E8EDF2;
-  --color-muted: #6B7280;
-  --font-sans: var(--font-heebo), system-ui, sans-serif;
+  /* Editorial / literary palette — warm paper, deep evergreen, warm ink */
+  --color-bg: #f4efe4;
+  --color-paper: #f4efe4;
+  --color-surface: #ece3d2;
+  --color-card: #fbf8f1;
+  --color-fg: #221d17;
+  --color-ink: #221d17;
+  --color-muted: #786e5d;
+  --color-accent: #1f3d34;
+  --color-accent-hover: #16302a;
+  --color-accent-soft: #e6ece6;
+  --color-line: #ddd3bf;
+
+  /* Legacy aliases — repointed so not-yet-reworked pages stay on-palette */
+  --color-navy: #1f3d34;
+  --color-navy-light: #2c5347;
+
+  --font-sans: var(--font-assistant), system-ui, sans-serif;
+  --font-serif: var(--font-assistant), system-ui, sans-serif;
 }
 
 html {
   direction: rtl;
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-fg);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display type — single-font system, weight carries the hierarchy */
+h1, h2, h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-card);
+}
+
+/* Visible focus for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Prose styles for MDX blog posts */
 .prose {
   direction: rtl;
   text-align: right;
-  line-height: 1.8;
+  line-height: 1.85;
+  font-size: 1.075rem;
 }
 
 .prose h1, .prose h2, .prose h3 {
-  color: var(--color-navy);
+  font-family: var(--font-serif);
+  color: var(--color-ink);
   font-weight: 700;
-  margin-top: 2rem;
+  margin-top: 2.25rem;
   margin-bottom: 1rem;
 }
 
-.prose h2 { font-size: 1.5rem; }
-.prose h3 { font-size: 1.25rem; }
+.prose h2 { font-size: 1.7rem; }
+.prose h3 { font-size: 1.3rem; }
 
 .prose p {
   margin-bottom: 1.25rem;
+  max-width: 68ch;
 }
 
 .prose a {
-  color: var(--color-navy);
+  color: var(--color-accent);
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .prose ul, .prose ol {
@@ -56,11 +103,13 @@ body {
 }
 
 .prose blockquote {
-  border-right: 4px solid var(--color-navy);
+  border-right: 3px solid var(--color-accent);
   border-left: none;
-  padding-right: 1rem;
+  padding-right: 1.25rem;
   padding-left: 0;
   color: var(--color-muted);
+  font-family: var(--font-serif);
   font-style: italic;
-  margin: 1.5rem 0;
+  font-size: 1.15rem;
+  margin: 1.75rem 0;
 }

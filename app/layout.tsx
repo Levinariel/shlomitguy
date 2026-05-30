@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Heebo } from "next/font/google";
+import { Assistant } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const heebo = Heebo({
+const assistant = Assistant({
   subsets: ["hebrew", "latin"],
-  variable: "--font-heebo",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-assistant",
   display: "swap",
 });
 
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "ד\"ר שלומית גיא | הוצאת רסיס נהרה",
     images: [
       {
-        url: "/images/profile-main-jpg.JPG",
+        url: "/images/profile-main.jpg",
         width: 800,
         alt: "ד\"ר שלומית גיא",
       },
@@ -43,7 +44,7 @@ const personSchema = {
   name: "ד\"ר שלומית גיא",
   alternateName: "Dr. Shlomit Guy",
   url: "https://rasisnahara.netlify.app",
-  image: "https://rasisnahara.netlify.app/images/profile-main-jpg.JPG",
+  image: "https://rasisnahara.netlify.app/images/profile-main.jpg",
   description:
     "חוקרת, סופרת ומרצה בתחום ספורט וחברה. בעלת תואר דוקטור מהמחלקה לאנתרופולוגיה וסוציולוגיה באוניברסיטת בן גוריון (2010). מחקריה עוסקים בקהילות אוהדים, אלימות בספורט הישגי, וכוחו של הספורט כמנוע חברתי וחינוכי.",
   jobTitle: "חוקרת, סופרת ומרצה",
@@ -112,7 +113,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="he" dir="rtl" className={heebo.variable}>
+    <html lang="he" dir="rtl" className={assistant.variable}>
       <body className="min-h-screen flex flex-col bg-[var(--color-bg)] text-[var(--color-fg)]">
         {/* Hidden form – lets Netlify detect the contact form at build time */}
         <form name="contact" data-netlify="true" hidden>

@@ -56,7 +56,7 @@ export default async function BlogPostPage({ params }: Props) {
     },
     image: post.featuredImage
       ? `https://rasisnahara.netlify.app${post.featuredImage}`
-      : "https://rasisnahara.netlify.app/images/profile-main-jpg.JPG",
+      : "https://rasisnahara.netlify.app/images/profile-main.jpg",
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `https://rasisnahara.netlify.app/blog/${slug}`,

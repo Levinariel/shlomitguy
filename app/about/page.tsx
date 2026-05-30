@@ -35,7 +35,7 @@ export default function AboutPage() {
       <div className="flex flex-col md:flex-row gap-10 items-start mb-12">
         <div className="w-full md:w-64 flex-shrink-0">
           <img
-            src="/images/profile-main-jpg.JPG"
+            src="/images/profile-main.jpg"
             alt='ד"ר שלומית גיא'
             className="rounded-2xl w-full object-cover shadow-md"
           />

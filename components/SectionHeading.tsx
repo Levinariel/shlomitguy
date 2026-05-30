@@ -1,15 +1,26 @@
 interface Props {
   title: string;
   subtitle?: string;
+  kicker?: string;
   centered?: boolean;
 }
 
-export default function SectionHeading({ title, subtitle, centered }: Props) {
+export default function SectionHeading({ title, subtitle, kicker, centered }: Props) {
   return (
     <div className={`mb-10 ${centered ? "text-center" : ""}`}>
-      <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-navy)] mb-2">{title}</h2>
-      {subtitle && <p className="text-[var(--color-muted)] text-base">{subtitle}</p>}
-      <div className={`mt-3 h-1 w-16 bg-[var(--color-navy)] rounded-full ${centered ? "mx-auto" : ""}`} />
+      {kicker && (
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-accent)]">
+          {kicker}
+        </p>
+      )}
+      <h2 className="font-serif text-3xl md:text-4xl font-bold text-[var(--color-ink)]">
+        {title}
+      </h2>
+      {subtitle && (
+        <p className="mt-3 text-[var(--color-muted)] text-base md:text-lg max-w-2xl">
+          {subtitle}
+        </p>
+      )}
     </div>
   );
 }

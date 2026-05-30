@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const navLinks = [
@@ -15,28 +16,43 @@ const navLinks = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="bg-[var(--color-navy)] text-white sticky top-0 z-50 shadow-md">
+    <header className="sticky top-0 z-50 border-b border-[var(--color-line)] bg-[var(--color-paper)]/85 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
-        <Link href="/" className="text-lg font-bold tracking-wide hover:opacity-80 transition-opacity">
+        <Link
+          href="/"
+          className="font-serif text-xl font-bold text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors"
+        >
           ד&quot;ר שלומית גיא
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex gap-6 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-7 text-sm">
           {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="hover:text-[var(--color-surface)] transition-colors"
+              aria-current={isActive(l.href) ? "page" : undefined}
+              className={`relative py-1 transition-colors ${
+                isActive(l.href)
+                  ? "text-[var(--color-accent)] font-semibold"
+                  : "text-[var(--color-ink)]/70 hover:text-[var(--color-accent)]"
+              }`}
             >
               {l.label}
+              {isActive(l.href) && (
+                <span className="absolute -bottom-0.5 right-0 left-0 h-px bg-[var(--color-accent)]" />
+              )}
             </Link>
           ))}
           <Link
             href="/lectures"
-            className="bg-white text-[var(--color-navy)] px-4 py-1.5 rounded-full font-semibold hover:bg-[var(--color-surface)] transition-colors"
+            className="bg-[var(--color-accent)] text-[var(--color-card)] px-5 py-2 rounded-sm font-semibold hover:bg-[var(--color-accent-hover)] transition-colors"
           >
             הזמנת הרצאה
           </Link>
@@ -47,21 +63,27 @@ export default function Header() {
           className="md:hidden p-2 rounded"
           onClick={() => setOpen(!open)}
           aria-label="תפריט"
+          aria-expanded={open}
         >
-          <span className="block w-5 h-0.5 bg-white mb-1" />
-          <span className="block w-5 h-0.5 bg-white mb-1" />
-          <span className="block w-5 h-0.5 bg-white" />
+          <span className="block w-5 h-0.5 bg-[var(--color-ink)] mb-1" />
+          <span className="block w-5 h-0.5 bg-[var(--color-ink)] mb-1" />
+          <span className="block w-5 h-0.5 bg-[var(--color-ink)]" />
         </button>
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[var(--color-navy-light)] px-4 pb-4">
+        <div className="md:hidden border-t border-[var(--color-line)] bg-[var(--color-paper)] px-4 pb-4">
           {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="block py-2 text-sm border-b border-white/20 hover:text-[var(--color-surface)] transition-colors"
+              aria-current={isActive(l.href) ? "page" : undefined}
+              className={`block py-2.5 text-sm border-b border-[var(--color-line)] transition-colors ${
+                isActive(l.href)
+                  ? "text-[var(--color-accent)] font-semibold"
+                  : "text-[var(--color-ink)]/80 hover:text-[var(--color-accent)]"
+              }`}
               onClick={() => setOpen(false)}
             >
               {l.label}
@@ -69,7 +91,7 @@ export default function Header() {
           ))}
           <Link
             href="/lectures"
-            className="mt-3 block text-center bg-white text-[var(--color-navy)] px-4 py-2 rounded-full font-semibold text-sm"
+            className="mt-3 block text-center bg-[var(--color-accent)] text-[var(--color-card)] px-4 py-2.5 rounded-sm font-semibold text-sm"
             onClick={() => setOpen(false)}
           >
             הזמנת הרצאה
