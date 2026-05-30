@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://rasisnahara.netlify.app/press" },
 };
 
-const typeColors: Record<string, string> = {
-  "כתבה": "bg-blue-100 text-blue-800",
-  "ראיון": "bg-green-100 text-green-800",
-  "ריאיון טלוויזיה": "bg-purple-100 text-purple-800",
-  "ריאיון רדיו": "bg-orange-100 text-orange-800",
-};
+const badgeClass = "bg-[var(--color-accent-soft)] text-[var(--color-accent)]";
+
+function youtubeId(url: string): string {
+  const m = url.match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/);
+  return m ? m[1] : "";
+}
 
 export default function PressPage() {
   const pressItems = getPressItems();
@@ -30,22 +30,34 @@ export default function PressPage() {
         {pressItems.map((item, i) => (
           <div
             key={i}
-            className="bg-white border border-[var(--color-surface)] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+            className="bg-[var(--color-card)] border border-[var(--color-line)] rounded-md overflow-hidden hover:border-[var(--color-accent)] transition-colors"
           >
-            {item.image && (
-              <div className="h-48 overflow-hidden">
+            {item.video && (
+              <div className="aspect-video bg-black">
+                <iframe
+                  src={`https://www.youtube.com/embed/${youtubeId(item.video)}`}
+                  title={item.title}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+            )}
+            {item.image && !item.video && (
+              <div className="bg-[var(--color-surface)] flex justify-center">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover"
+                  className="max-h-[30rem] w-auto max-w-full object-contain"
                 />
               </div>
             )}
             <div className="p-5 flex gap-4 items-start">
               <div className="flex-shrink-0 w-20 text-center">
-                <span className="font-bold text-[var(--color-navy)] text-sm block">{item.outlet}</span>
+                <span className="font-bold text-[var(--color-accent)] text-sm block">{item.outlet}</span>
               </div>
-              <div className="w-px bg-[var(--color-surface)] self-stretch flex-shrink-0" />
+              <div className="w-px bg-[var(--color-line)] self-stretch flex-shrink-0" />
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1 flex-wrap">
                   {item.url ? (
@@ -53,18 +65,14 @@ export default function PressPage() {
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-semibold text-[var(--color-fg)] hover:text-[var(--color-navy)] hover:underline"
+                      className="font-semibold text-[var(--color-ink)] hover:text-[var(--color-accent)] hover:underline"
                     >
                       {item.title}
                     </a>
                   ) : (
-                    <h3 className="font-semibold text-[var(--color-fg)]">{item.title}</h3>
+                    <h3 className="font-semibold text-[var(--color-ink)]">{item.title}</h3>
                   )}
-                  <span
-                    className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                      typeColors[item.type] ?? "bg-gray-100 text-gray-700"
-                    }`}
-                  >
+                  <span className={`text-xs px-2 py-0.5 rounded-sm font-medium ${badgeClass}`}>
                     {item.type}
                   </span>
                 </div>

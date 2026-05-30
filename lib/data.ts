@@ -11,6 +11,7 @@ export interface Book {
   tag: string;
   free?: boolean;
   freeUrl?: string;
+  page?: string;
 }
 
 export interface PressItem {
@@ -20,6 +21,7 @@ export interface PressItem {
   type: string;
   image?: string;
   url?: string;
+  video?: string;
 }
 
 function readJson<T>(filename: string, fallback: T): T {

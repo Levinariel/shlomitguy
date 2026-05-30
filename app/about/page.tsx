@@ -32,12 +32,13 @@ export default function AboutPage() {
     <div className="max-w-4xl mx-auto px-4 py-16">
       <SectionHeading title="אודות" subtitle='ד"ר שלומית גיא' />
 
-      <div className="flex flex-col md:flex-row gap-10 items-start mb-12">
-        <div className="w-full md:w-64 flex-shrink-0">
+      <div className="flex flex-col md:flex-row gap-10 items-start mb-14">
+        <div className="w-full md:w-64 flex-shrink-0 relative">
+          <div className="absolute -bottom-3 -left-3 w-full h-full rounded-md bg-[var(--color-accent)]/10 hidden md:block" />
           <img
             src="/images/profile-main.jpg"
             alt='ד"ר שלומית גיא'
-            className="rounded-2xl w-full object-cover shadow-md"
+            className="relative rounded-md w-full object-cover shadow-[0_18px_50px_-25px_rgba(31,61,52,0.45)]"
           />
         </div>
         <div className="flex-1 leading-relaxed space-y-4 text-[var(--color-fg)]">
@@ -61,7 +62,7 @@ export default function AboutPage() {
           </p>
           <p>
             לבסוף, בשנת 2024, רכשתי את הוצאת רסיס נהרה, ההוצאה בה פירסמתי את ספרי הראשון (<em>אימפריה</em>, 2010). כיום רסיס נהרה מבית שלומית גיא היא הוצאת בוטיק המתמחה בספרי ספורט וילדים. בין השנים 2024–2026 הוצאנו לאור שמונה ספרים פורצי דרך ומיוחדים.{" "}
-            <Link href="/books" className="text-[var(--color-navy)] font-semibold hover:underline">
+            <Link href="/books" className="text-[var(--color-accent)] font-semibold underline underline-offset-2 hover:text-[var(--color-accent-hover)]">
               לרשימת הספרים ולעמוד ההוצאה לחצו כאן.
             </Link>
           </p>
@@ -69,25 +70,29 @@ export default function AboutPage() {
       </div>
 
       {/* Timeline */}
-      <div className="mb-12">
-        <h2 className="text-xl font-bold text-[var(--color-navy)] mb-6">עיקרי הקריירה</h2>
-        <div className="space-y-4">
+      <div className="mb-14">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-accent)] mb-1">ציר זמן</p>
+        <h2 className="text-2xl font-extrabold text-[var(--color-ink)] mb-6">עיקרי הקריירה</h2>
+        <div className="border-t border-[var(--color-line)]">
           {timeline.map((item) => (
-            <div key={item.event} className="flex gap-4 items-start">
-              <span className="bg-[var(--color-navy)] text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap flex-shrink-0 mt-0.5">
+            <div
+              key={item.event}
+              className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-8 border-b border-[var(--color-line)] py-5"
+            >
+              <span className="text-sm font-semibold text-[var(--color-accent)] tabular-nums md:w-28 shrink-0">
                 {item.year}
               </span>
-              <p className="text-[var(--color-fg)] leading-relaxed">{item.event}</p>
+              <p className="text-[var(--color-ink)]/85 leading-relaxed">{item.event}</p>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="bg-[var(--color-surface)] rounded-2xl p-6 text-center">
-        <p className="text-[var(--color-navy)] font-semibold mb-4">מעוניינים להזמין הרצאה?</p>
+      <div className="bg-[var(--color-surface)] rounded-md p-8 text-center border border-[var(--color-line)]">
+        <p className="text-[var(--color-ink)] font-semibold text-lg mb-5">מעוניינים להזמין הרצאה?</p>
         <Link
           href="/contact"
-          className="inline-block bg-[var(--color-navy)] text-white px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-[var(--color-navy-light)] transition-colors"
+          className="inline-block bg-[var(--color-accent)] text-[var(--color-card)] px-7 py-3 rounded-sm font-semibold hover:bg-[var(--color-accent-hover)] transition-colors active:scale-[0.98]"
         >
           צרו קשר
         </Link>

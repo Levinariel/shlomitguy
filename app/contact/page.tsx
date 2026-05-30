@@ -33,10 +33,10 @@ export default function ContactPage() {
       </p>
 
       {submitted ? (
-        <div className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center">
-          <p className="text-2xl mb-2">✓</p>
-          <p className="font-bold text-green-800 text-lg mb-1">ההודעה נשלחה בהצלחה!</p>
-          <p className="text-green-700 text-sm">אחזור אליכם בהקדם האפשרי.</p>
+        <div className="bg-[var(--color-accent-soft)] border border-[var(--color-line)] rounded-md p-8 text-center">
+          <p className="text-3xl mb-2 text-[var(--color-accent)]">✓</p>
+          <p className="font-bold text-[var(--color-ink)] text-lg mb-1">ההודעה נשלחה בהצלחה!</p>
+          <p className="text-[var(--color-muted)] text-sm">אחזור אליכם בהקדם האפשרי.</p>
         </div>
       ) : (
         <form
@@ -59,7 +59,7 @@ export default function ContactPage() {
               name="name"
               required
               placeholder="ישראל ישראלי"
-              className="w-full border border-[var(--color-surface)] rounded-xl px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-navy)] text-right"
+              className="w-full border border-[var(--color-line)] rounded-sm px-4 py-3 text-sm bg-[var(--color-card)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] text-right"
             />
           </div>
 
@@ -73,7 +73,7 @@ export default function ContactPage() {
               name="email"
               required
               placeholder="name@example.com"
-              className="w-full border border-[var(--color-surface)] rounded-xl px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-navy)] text-right"
+              className="w-full border border-[var(--color-line)] rounded-sm px-4 py-3 text-sm bg-[var(--color-card)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] text-right"
               dir="ltr"
             />
           </div>
@@ -85,7 +85,7 @@ export default function ContactPage() {
             <select
               id="subject"
               name="subject"
-              className="w-full border border-[var(--color-surface)] rounded-xl px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-navy)] text-right"
+              className="w-full border border-[var(--color-line)] rounded-sm px-4 py-3 text-sm bg-[var(--color-card)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] text-right"
             >
               <option value="">בחרו נושא</option>
               <option value="הזמנת הרצאה">הזמנת הרצאה</option>
@@ -105,14 +105,14 @@ export default function ContactPage() {
               required
               rows={6}
               placeholder="כתבו את הודעתכם כאן..."
-              className="w-full border border-[var(--color-surface)] rounded-xl px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-navy)] text-right resize-none"
+              className="w-full border border-[var(--color-line)] rounded-sm px-4 py-3 text-sm bg-[var(--color-card)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] text-right resize-none"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[var(--color-navy)] text-white py-3 rounded-full font-bold text-sm hover:bg-[var(--color-navy-light)] transition-colors disabled:opacity-60"
+            className="w-full bg-[var(--color-accent)] text-[var(--color-card)] py-3 rounded-sm font-semibold text-sm hover:bg-[var(--color-accent-hover)] transition-colors active:scale-[0.98] disabled:opacity-60"
           >
             {loading ? "שולח..." : "שלחו הודעה"}
           </button>
@@ -124,7 +124,7 @@ export default function ContactPage() {
           href="https://www.youtube.com/channel/UCKZ1VPhJ0Kn-ar9j6W6yoxg"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-[var(--color-navy)] transition-colors"
+          className="hover:text-[var(--color-accent)] transition-colors"
         >
           יוטיוב
         </a>
@@ -132,7 +132,7 @@ export default function ContactPage() {
           href="https://www.linkedin.com/in/shlomit-guy-54707873/"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-[var(--color-navy)] transition-colors"
+          className="hover:text-[var(--color-accent)] transition-colors"
         >
           לינקדאין
         </a>
@@ -140,7 +140,7 @@ export default function ContactPage() {
           href="https://www.facebook.com/dr.shlomitguy"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-[var(--color-navy)] transition-colors"
+          className="hover:text-[var(--color-accent)] transition-colors"
         >
           פייסבוק
         </a>
