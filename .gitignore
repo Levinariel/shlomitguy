@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Local Netlify folder
 .netlify
+
+# legacy WP scrape (intermediate; MDX in content/ is the deliverable)
+/_wp-archive

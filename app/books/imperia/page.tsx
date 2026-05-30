@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getAllChapters } from "@/lib/imperia";
 
 export const metadata: Metadata = {
   title: 'אימפריה | ד"ר שלומית גיא',
@@ -10,56 +11,10 @@ export const metadata: Metadata = {
 
 const SITE = "https://shlomitguy.co.il";
 
-const frontMatter = [
-  { label: "הקדמה מאת אבי מלר", url: `${SITE}/?page_id=170` },
-  { label: "תודות", url: `${SITE}/?p=312` },
-  { label: "פרולוג", url: `${SITE}/?page_id=168` },
-];
-
-const chapters = [
-  { n: "01", label: "ג'וני של ארסנל, ארסנל של ג'וני", url: `${SITE}/?p=1786` },
-  { n: "02", label: "אוגוסט–ספטמבר 2007: שכר לימוד", url: `${SITE}/?p=1803` },
-  { n: "03", label: "להיות אוהד כדורגל סוף המאה העשרים", url: `${SITE}/?p=1811` },
-  {
-    n: "04",
-    label: "להיות אוהד כדורגל מסוף המאה העשרים, או: אז איך הם עשו את זה?",
-    url: `${SITE}/?p=1814`,
-  },
-  {
-    n: "05",
-    label:
-      '"ככל שעמוקים יותר היסודות חזקה יותר המצודה" (הכיתוב בכניסת השחקנים לאצטדיון האמירויות)',
-    url: `${SITE}/?p=1818`,
-  },
-  { n: "06", label: "קצת טקטיקה וממשיכים", url: `${SITE}/?p=1823` },
-  { n: "07", label: "ילדים טובים משחקים כדורגל", url: `${SITE}/?p=1826` },
-  { n: "08", label: "משפחה טובה", url: `${SITE}/?p=1829` },
-  { n: "09", label: "יום שמשי אחד", url: `${SITE}/?p=1832` },
-  { n: "10", label: "חורף, תקופה של מהפכות", url: `${SITE}/?p=1842` },
-  { n: "11", label: "חג המולד", url: `${SITE}/?p=1845` },
-  { n: "12", label: "כך בונים אימפריה", url: `${SITE}/?p=1851` },
-  {
-    n: "13",
-    label: "אין זרים בכדורגל האנגלי (להוציא את כריסטיאנו רונלדו)",
-    url: `${SITE}/?p=1854`,
-  },
-  { n: "14", label: "התחלת הסוף", url: `${SITE}/?p=1857` },
-  { n: "15", label: "שיר פרידה", url: `${SITE}/?p=1891` },
-  { n: "16", label: "אימפריות נופלות לאט", url: `${SITE}/?p=1894` },
-  { n: "17", label: "הגזר", url: `${SITE}/?p=1903` },
-];
-
-const backMatter = [
-  { label: "אפילוג", url: `${SITE}/?p=1907` },
-  { label: 'המלצות דו"ח ועדת טיילור (מתורגם לעברית)', url: `${SITE}/?p=1907` },
-];
-
-function ChapterRow({ n, label, url }: { n?: string; label: string; url: string }) {
+function ChapterRow({ n, label, slug }: { n?: string; label: string; slug: string }) {
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      href={`/books/imperia/${slug}`}
       className="group flex items-baseline gap-4 md:gap-6 border-b border-[var(--color-line)] py-4 hover:bg-[var(--color-surface)]/50 transition-colors"
     >
       <span className="text-sm font-semibold text-[var(--color-accent)] tabular-nums w-8 shrink-0">
@@ -68,7 +23,7 @@ function ChapterRow({ n, label, url }: { n?: string; label: string; url: string 
       <span className="text-[var(--color-ink)] leading-relaxed group-hover:text-[var(--color-accent)] transition-colors">
         {label}
       </span>
-    </a>
+    </Link>
   );
 }
 
@@ -111,14 +66,13 @@ export default function ImperiaPage() {
       <div className="mt-12">
         <h2 className="text-2xl font-extrabold text-[var(--color-ink)] mb-4">הספר לקריאה חופשית</h2>
         <div className="border-t border-[var(--color-line)]">
-          {frontMatter.map((c) => (
-            <ChapterRow key={c.label} {...c} />
-          ))}
-          {chapters.map((c) => (
-            <ChapterRow key={c.n} {...c} />
-          ))}
-          {backMatter.map((c) => (
-            <ChapterRow key={c.label} {...c} />
+          {getAllChapters().map((c) => (
+            <ChapterRow
+              key={c.slug}
+              slug={c.slug}
+              label={c.title}
+              n={c.chapter != null ? String(c.chapter).padStart(2, "0") : undefined}
+            />
           ))}
         </div>
       </div>

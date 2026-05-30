@@ -4,16 +4,32 @@ import matter from "gray-matter";
 
 const postsDir = path.join(process.cwd(), "content/posts");
 
+export type Category = "article" | "committee" | "lecture" | "conference";
+
 export interface PostMeta {
   slug: string;
   title: string;
   date: string;
   excerpt: string;
   featuredImage?: string;
+  category: Category;
 }
 
 export interface Post extends PostMeta {
   content: string;
+}
+
+// Display order + Hebrew labels for the blog category groupings.
+export const CATEGORY_ORDER: Category[] = ["article", "committee", "lecture", "conference"];
+export const CATEGORY_LABELS: Record<Category, string> = {
+  article: "מאמרים ומחקר",
+  committee: "ועדות ודוחות",
+  lecture: "הרצאות ומומחים",
+  conference: "כנס שלום הילד בספורט",
+};
+
+function normCategory(c: unknown): Category {
+  return c === "committee" || c === "lecture" || c === "conference" ? c : "article";
 }
 
 function ensureDir() {
@@ -32,6 +48,7 @@ export async function getAllPosts(): Promise<PostMeta[]> {
       date: data.date ?? "",
       excerpt: data.excerpt ?? "",
       featuredImage: data.featuredImage,
+      category: normCategory(data.category),
     } as PostMeta;
   });
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -57,6 +74,7 @@ export async function getPost(slug: string): Promise<Post | null> {
     date: data.date ?? "",
     excerpt: data.excerpt ?? "",
     featuredImage: data.featuredImage,
+    category: normCategory(data.category),
     content,
   };
 }

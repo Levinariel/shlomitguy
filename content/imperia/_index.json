@@ -1,0 +1,156 @@
+[
+  {
+    "slug": "front-170",
+    "id": 170,
+    "type": "page",
+    "group": "front",
+    "title": "הקדמה מאת אבי מלר"
+  },
+  {
+    "slug": "front-312",
+    "id": 312,
+    "type": "post",
+    "group": "front",
+    "title": "תודות"
+  },
+  {
+    "slug": "front-168",
+    "id": 168,
+    "type": "page",
+    "group": "front",
+    "title": "פרולוג"
+  },
+  {
+    "slug": "chapter-01",
+    "id": 1786,
+    "type": "post",
+    "n": 1,
+    "title": "ג'וני של ארסנל, ארסנל של ג'וני"
+  },
+  {
+    "slug": "chapter-02",
+    "id": 1803,
+    "type": "post",
+    "n": 2,
+    "title": "אוגוסט–ספטמבר 2007: שכר לימוד"
+  },
+  {
+    "slug": "chapter-03",
+    "id": 1811,
+    "type": "post",
+    "n": 3,
+    "title": "להיות אוהד כדורגל סוף המאה העשרים"
+  },
+  {
+    "slug": "chapter-04",
+    "id": 1814,
+    "type": "post",
+    "n": 4,
+    "title": "אז איך הם עשו את זה?"
+  },
+  {
+    "slug": "chapter-05",
+    "id": 1818,
+    "type": "post",
+    "n": 5,
+    "title": "\"ככל שעמוקים יותר היסודות חזקה יותר המצודה\""
+  },
+  {
+    "slug": "chapter-06",
+    "id": 1823,
+    "type": "post",
+    "n": 6,
+    "title": "קצת טקטיקה וממשיכים"
+  },
+  {
+    "slug": "chapter-07",
+    "id": 1826,
+    "type": "post",
+    "n": 7,
+    "title": "ילדים טובים משחקים כדורגל"
+  },
+  {
+    "slug": "chapter-08",
+    "id": 1829,
+    "type": "post",
+    "n": 8,
+    "title": "משפחה טובה"
+  },
+  {
+    "slug": "chapter-09",
+    "id": 1832,
+    "type": "post",
+    "n": 9,
+    "title": "יום שמשי אחד"
+  },
+  {
+    "slug": "chapter-10",
+    "id": 1842,
+    "type": "post",
+    "n": 10,
+    "title": "חורף, תקופה של מהפכות"
+  },
+  {
+    "slug": "chapter-11",
+    "id": 1845,
+    "type": "post",
+    "n": 11,
+    "title": "חג המולד"
+  },
+  {
+    "slug": "chapter-12",
+    "id": 1851,
+    "type": "post",
+    "n": 12,
+    "title": "כך בונים אימפריה"
+  },
+  {
+    "slug": "chapter-13",
+    "id": 1854,
+    "type": "post",
+    "n": 13,
+    "title": "אין זרים בכדורגל האנגלי (להוציא את כריסטיאנו רונלדו)"
+  },
+  {
+    "slug": "chapter-14",
+    "id": 1857,
+    "type": "post",
+    "n": 14,
+    "title": "התחלת הסוף"
+  },
+  {
+    "slug": "chapter-15",
+    "id": 1891,
+    "type": "post",
+    "n": 15,
+    "title": "שיר פרידה"
+  },
+  {
+    "slug": "chapter-16",
+    "id": 1894,
+    "type": "post",
+    "n": 16,
+    "title": "אימפריות נופלות לאט"
+  },
+  {
+    "slug": "chapter-17",
+    "id": 1903,
+    "type": "post",
+    "n": 17,
+    "title": "הגזר"
+  },
+  {
+    "slug": "back-1907",
+    "id": 1907,
+    "type": "post",
+    "group": "back",
+    "title": "אפילוג"
+  },
+  {
+    "slug": "back-166",
+    "id": 166,
+    "type": "page",
+    "group": "back",
+    "title": "המלצות דו\"ח ועדת טיילור (מתורגם לעברית)"
+  }
+]
