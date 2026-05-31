@@ -1,4 +1,5 @@
 import { getAllPosts } from "@/lib/posts";
+import { getAllChapters } from "@/lib/imperia";
 import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
@@ -14,14 +15,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
+  const chapterUrls = getAllChapters().map((c) => ({
+    url: `${BASE}/books/imperia/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "yearly" as const,
+    priority: 0.6,
+  }));
+
   return [
     { url: BASE, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 1.0 },
     { url: `${BASE}/about`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
     { url: `${BASE}/books`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${BASE}/books/imperia`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${BASE}/lectures`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${BASE}/press`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
     { url: `${BASE}/blog`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
     { url: `${BASE}/contact`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.5 },
     ...postUrls,
+    ...chapterUrls,
   ];
 }

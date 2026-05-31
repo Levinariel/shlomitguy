@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { getAllChapterSlugs, getChapter, getChapterNeighbors } from "@/lib/imperia";
+import { mdxComponents } from "@/components/mdx";
+
+const BASE = "https://rasisnahara.netlify.app";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -32,8 +35,37 @@ export default async function ChapterPage({ params }: Props) {
   const kicker =
     ch.chapter != null ? `פרק ${ch.chapter}` : ch.group === "front" ? "פתח דבר" : "נספח";
 
+  const chapterSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: ch.title,
+    url: `${BASE}/books/imperia/${slug}`,
+    inLanguage: "he",
+    author: { "@type": "Person", name: 'ד"ר שלומית גיא', url: `${BASE}/about` },
+    isPartOf: {
+      "@type": "Book",
+      name: "אימפריה",
+      author: { "@type": "Person", name: 'ד"ר שלומית גיא' },
+      url: `${BASE}/books/imperia`,
+      inLanguage: "he",
+    },
+  };
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ספרים", item: `${BASE}/books` },
+      { "@type": "ListItem", position: 2, name: "אימפריה", item: `${BASE}/books/imperia` },
+      { "@type": "ListItem", position: 3, name: ch.title, item: `${BASE}/books/imperia/${slug}` },
+    ],
+  };
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([chapterSchema, breadcrumb]) }}
+      />
       <Link
         href="/books/imperia"
         className="text-sm text-[var(--color-accent)] hover:underline mb-8 block"
@@ -49,7 +81,7 @@ export default async function ChapterPage({ params }: Props) {
       </h1>
 
       <div className="prose">
-        <MDXRemote source={ch.content} />
+        <MDXRemote source={ch.content} components={mdxComponents} />
       </div>
 
       <nav className="mt-12 pt-8 border-t border-[var(--color-line)] flex justify-between gap-4 text-sm">

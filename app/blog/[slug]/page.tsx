@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllSlugs, getPost } from "@/lib/posts";
+import { mdxComponents } from "@/components/mdx";
 import Link from "next/link";
 
 interface Props {
@@ -93,7 +94,7 @@ export default async function BlogPostPage({ params }: Props) {
       <h1 className="text-3xl md:text-4xl font-extrabold text-[var(--color-ink)] mb-8 leading-tight">{post.title}</h1>
 
       <div className="prose">
-        <MDXRemote source={post.content} />
+        <MDXRemote source={post.content} components={mdxComponents} />
       </div>
 
       <div className="mt-12 pt-8 border-t border-[var(--color-line)]">

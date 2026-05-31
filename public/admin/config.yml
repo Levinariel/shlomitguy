@@ -21,8 +21,43 @@ collections:
       - { label: "כותרת", name: title, widget: string }
       - { label: "תאריך", name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
       - { label: "תקציר", name: excerpt, widget: text }
+      - label: "קטגוריה"
+        name: category
+        widget: select
+        default: article
+        options:
+          - { label: "מאמרים ומחקר", value: article }
+          - { label: "ועדות ודוחות", value: committee }
+          - { label: "הרצאות ומומחים", value: lecture }
+          - { label: "כנס שלום הילד בספורט", value: conference }
       - { label: "תמונה ראשית", name: featuredImage, widget: image, required: false }
       - { label: "תוכן", name: body, widget: markdown }
+      # provenance of migrated posts — hidden so it's preserved on save, not edited
+      - { label: "מקור (WordPress)", name: sourceUrl, widget: hidden, required: false }
+
+  # ─── Imperia book chapters ───────────────────────────────────────────────────
+  - name: imperia
+    label: 'הספר "אימפריה"'
+    label_singular: פרק
+    folder: content/imperia
+    create: true
+    slug: "{{slug}}"
+    extension: mdx
+    format: frontmatter
+    fields:
+      - { label: "כותרת", name: title, widget: string }
+      - { label: "סדר הופעה", name: order, widget: number, value_type: int, hint: "המספר שקובע את סדר הפרקים בעמוד הספר (קטן→גדול)" }
+      - { label: "מספר פרק", name: chapter, widget: number, value_type: int, required: false, hint: "השאירי ריק עבור הקדמה/פרולוג/נספח" }
+      - label: "סוג"
+        name: group
+        widget: select
+        default: chapter
+        options:
+          - { label: "פתח דבר (הקדמה/פרולוג)", value: front }
+          - { label: "פרק", value: chapter }
+          - { label: "נספח", value: back }
+      - { label: "תוכן", name: body, widget: markdown }
+      - { label: "מקור (WordPress)", name: sourceUrl, widget: hidden, required: false }
 
   # ─── Books ─────────────────────────────────────────────────────────────────
   - name: books-data

@@ -27,9 +27,37 @@ function ChapterRow({ n, label, slug }: { n?: string; label: string; slug: strin
   );
 }
 
+const BASE = "https://rasisnahara.netlify.app";
+
 export default function ImperiaPage() {
+  const chapters = getAllChapters();
+  const bookSchema = {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    name: "אימפריה",
+    author: { "@type": "Person", name: 'ד"ר שלומית גיא', url: `${BASE}/about` },
+    publisher: { "@type": "Organization", name: "הוצאת רסיס נהרה" },
+    datePublished: "2010-10-08",
+    inLanguage: "he",
+    url: `${BASE}/books/imperia`,
+    description:
+      'תיעוד שנת מחקר שטח בין קהילות אוהדי הכדורגל באנגליה. הספר זמין לקריאה חופשית, פרק אחר פרק.',
+    hasPart: chapters
+      .filter((c) => c.chapter != null)
+      .map((c) => ({
+        "@type": "Chapter",
+        name: c.title,
+        position: c.chapter,
+        url: `${BASE}/books/imperia/${c.slug}`,
+      })),
+  };
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(bookSchema) }}
+      />
       <Link
         href="/books"
         className="text-sm text-[var(--color-accent)] hover:underline mb-8 block"
@@ -66,7 +94,7 @@ export default function ImperiaPage() {
       <div className="mt-12">
         <h2 className="text-2xl font-extrabold text-[var(--color-ink)] mb-4">הספר לקריאה חופשית</h2>
         <div className="border-t border-[var(--color-line)]">
-          {getAllChapters().map((c) => (
+          {chapters.map((c) => (
             <ChapterRow
               key={c.slug}
               slug={c.slug}
