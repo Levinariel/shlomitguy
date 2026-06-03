@@ -9,8 +9,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://rasisnahara.netlify.app/books/imperia" },
 };
 
-const SITE = "https://shlomitguy.co.il";
-
 function ChapterRow({ n, label, slug }: { n?: string; label: string; slug: string }) {
   return (
     <Link
@@ -111,10 +109,10 @@ export default function ImperiaPage() {
           מעדיפים לקרוא את &quot;אימפריה&quot; כעותק קשיח?
         </h2>
         <p className="text-sm text-[var(--color-muted)] leading-relaxed mb-5">
-          התשלום מתבצע באמצעות PayPal ודורש הרשמה קצרה. לאחר התשלום הספר יישלח לביתכם.
+          הרכישה מתבצעת בעמוד תשלום מאובטח. לאחר התשלום הספר יישלח לביתכם.
         </p>
         <a
-          href={`${SITE}/?page_id=672`}
+          href="https://meshulam.co.il/purchase?b=f13527f50014a6302908b752bb62b648"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-[var(--color-accent)] text-[var(--color-card)] px-7 py-3 rounded-sm font-semibold text-sm hover:bg-[var(--color-accent-hover)] transition-colors active:scale-[0.98]"

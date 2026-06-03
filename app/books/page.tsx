@@ -86,13 +86,19 @@ export default function BooksPage() {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
         {books.map((book) => {
-          const cover = (
+          const cover = book.image ? (
             <div className="aspect-[3/4] rounded-md bg-[var(--color-surface)] overflow-hidden mb-4">
               <img
                 src={book.image}
                 alt={book.title}
                 className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
               />
+            </div>
+          ) : (
+            <div className="aspect-[3/4] rounded-md bg-[var(--color-accent)] text-[var(--color-card)] overflow-hidden mb-4 flex flex-col items-center justify-center text-center p-6">
+              <span className="text-xs uppercase tracking-[0.2em] text-white/70 mb-3">רסיס נהרה</span>
+              <span className="text-xl font-extrabold leading-snug">{book.title}</span>
+              <span className="mt-3 text-xs text-white/70">הכריכה תעודכן בקרוב</span>
             </div>
           );
           return (
@@ -114,26 +120,36 @@ export default function BooksPage() {
                 )}
               </h3>
               <p className="text-sm text-[var(--color-muted)] leading-relaxed flex-1">{book.desc}</p>
-              {book.page ? (
-                <Link
-                  href={book.page}
-                  className="mt-4 inline-flex w-fit items-center gap-1 text-sm font-semibold text-[var(--color-accent)] hover:gap-2 transition-all"
-                >
-                  לעמוד הספר ולקריאה חופשית <span aria-hidden>←</span>
-                </Link>
-              ) : (
-                book.free &&
-                book.freeUrl && (
+              <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
+                {book.page && (
+                  <Link
+                    href={book.page}
+                    className="inline-flex w-fit items-center gap-1 text-sm font-semibold text-[var(--color-accent)] hover:gap-2 transition-all"
+                  >
+                    לעמוד הספר ולקריאה חופשית <span aria-hidden>←</span>
+                  </Link>
+                )}
+                {!book.page && book.free && book.freeUrl && (
                   <a
                     href={book.freeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 inline-flex w-fit items-center bg-[var(--color-accent)] text-[var(--color-card)] px-5 py-2 rounded-sm text-sm font-semibold hover:bg-[var(--color-accent-hover)] transition-colors active:scale-[0.98]"
+                    className="inline-flex w-fit items-center text-sm font-semibold text-[var(--color-accent)] hover:underline"
                   >
                     קראו בחינם
                   </a>
-                )
-              )}
+                )}
+                {book.buyUrl && (
+                  <a
+                    href={book.buyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-fit items-center bg-[var(--color-accent)] text-[var(--color-card)] px-5 py-2 rounded-sm text-sm font-semibold hover:bg-[var(--color-accent-hover)] transition-colors active:scale-[0.98]"
+                  >
+                    לרכישה
+                  </a>
+                )}
+              </div>
             </div>
           );
         })}

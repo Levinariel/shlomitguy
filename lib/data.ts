@@ -12,6 +12,7 @@ export interface Book {
   free?: boolean;
   freeUrl?: string;
   page?: string;
+  buyUrl?: string;
 }
 
 export interface PressItem {

@@ -11,24 +11,29 @@ export const metadata: Metadata = {
 const lectureTopics = [
   {
     n: "01",
-    title: "מניעת אלימות בספורט",
-    desc: "כלים מעשיים להפחתת אלימות בקרב ילדים ומבוגרים בהכשרות ספורטיביות.",
+    title: "הגזר במקום המקל",
+    desc: "מניעת אלימות דרך שימוש בתיאוריית החלונות השבורים ובדוגמה של הכדורגל האנגלי.",
   },
   {
     n: "02",
-    title: "ספורט וחינוך",
-    desc: "כיצד הספורט יכול לשמש כלי חינוכי יעיל ולפתח מיומנויות חיים.",
+    title: "ארסנל פינת באר שבע",
+    desc: "תיאוריות וכלים פרקטיים לניהול קהל אוהדים.",
   },
   {
     n: "03",
-    title: "מנהיגות בספורט",
-    desc: "פיתוח מנהיגות, ניהול קבוצות ובניית תרבות ארגונית בריאה.",
+    title: "לרוץ עם נעלי עקב",
+    desc: "האם נשים בספורט אי פעם תגענה לשוויון?",
+  },
+  {
+    n: "04",
+    title: "כולם ידעו ואף אחד לא עשה דבר",
+    desc: "אלימות של צוותי אימון בילדות ובילדים בספורט ההישגי.",
   },
 ];
 
 const stats = [
   { num: "20+", label: "שנות מחקר" },
-  { num: "8+", label: "ספרים שפורסמו" },
+  { num: "11", label: "ספרים" },
   { num: "100+", label: "הרצאות" },
   { num: "PhD", label: "מחקר אנתרופולוגי" },
 ];
@@ -48,10 +53,10 @@ export default async function Home() {
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-[var(--color-ink)] leading-[1.05]">
               ד&quot;ר שלומית גיא
             </h1>
-            <p className="mt-6 text-xl md:text-2xl text-[var(--color-ink)]/80 leading-snug">
+            <p className="mt-6 text-2xl md:text-3xl text-[var(--color-ink)]/80 leading-snug">
               ספורט וחברה — מחקר, כתיבה והרצאות.
             </p>
-            <p className="mt-4 text-base text-[var(--color-muted)] leading-relaxed max-w-md">
+            <p className="mt-4 text-lg text-[var(--color-muted)] leading-relaxed max-w-md">
               הרצאות וסמינרים למנהלים, מאמנים וארגונים · מניעת אלימות בספורט הישגי · הוצאת רסיס נהרה לספרי ספורט וילדים.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
@@ -99,9 +104,9 @@ export default async function Home() {
             <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-accent)] via-[var(--color-accent)]/70 to-[var(--color-accent)]/10" />
             <div className="relative p-8">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70 mb-2">הוצאת ספרים</p>
-              <h2 className="text-2xl font-extrabold mb-2">רסיס נהרה</h2>
-              <p className="text-white/80 text-sm leading-relaxed mb-4 max-w-sm">
-                הוצאת בוטיק המתמחה בספרי ספורט וילדים. שמונה ספרים פורצי דרך בין השנים 2024–2026.
+              <h2 className="text-3xl font-extrabold mb-2">רסיס נהרה</h2>
+              <p className="text-white/80 text-base leading-relaxed mb-4 max-w-sm">
+                הוצאת בוטיק המתמחה בספרי ספורט וילדים. אחד עשר ספרים פורצי דרך — מחקר, עיון וספרות ילדים.
               </p>
               <span className="inline-flex items-center gap-1 text-sm font-semibold group-hover:gap-2 transition-all">
                 לכל הספרים <span aria-hidden>←</span>
@@ -116,8 +121,8 @@ export default async function Home() {
           >
             <div className="relative p-8">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-accent)] mb-2">הרצאות</p>
-              <h2 className="text-2xl font-extrabold mb-2 text-[var(--color-ink)]">מניעת אלימות בספורט</h2>
-              <p className="text-[var(--color-muted)] text-sm leading-relaxed mb-4 max-w-sm">
+              <h2 className="text-3xl font-extrabold mb-2 text-[var(--color-ink)]">מניעת אלימות בספורט</h2>
+              <p className="text-[var(--color-muted)] text-base leading-relaxed mb-4 max-w-sm">
                 הרצאות מבוססות מחקר למאמנים, הורים וארגוני ספורט. כלים מעשיים לשינוי תרבות האימון.
               </p>
               <span className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-accent)] group-hover:gap-2 transition-all">

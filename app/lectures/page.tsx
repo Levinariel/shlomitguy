@@ -10,27 +10,23 @@ export const metadata: Metadata = {
 const topics = [
   {
     n: "01",
-    title: "מניעת אלימות בספורט הישגי",
-    audience: "מאמנים, הורים, מנהלי קבוצות ילדים",
-    desc: 'בהתבסס על מחקר ממשי ו-13 ראיונות עם ספורטאים, ההרצאה חושפת את המנגנונים שמאפשרים אלימות בהכשרות ילדים ומציגה כלים מעשיים לשינוי. מבוסס על הספר "כולם ידעו ואף אחד לא עשה דבר".',
+    title: "הגזר במקום המקל",
+    desc: "מניעת אלימות דרך שימוש בתיאוריית החלונות השבורים ובדוגמה של הכדורגל האנגלי.",
   },
   {
     n: "02",
-    title: "ספורט ככלי חינוכי",
-    audience: "מחנכים, מנהלי בתי ספר, אנשי חינוך",
-    desc: "כיצד ניתן לרתום את עולם הספורט לחיזוק ערכים, פיתוח מיומנויות חיים וקידום תלמידים. הרצאה עם דוגמאות מהשטח ומחקר עדכני.",
+    title: "ארסנל פינת באר שבע",
+    desc: "תיאוריות וכלים פרקטיים לניהול קהל אוהדים.",
   },
   {
     n: "03",
-    title: "מנהיגות ותרבות ארגונית בספורט",
-    audience: "מנהלים בכירים, מאמנים, ארגוני ספורט",
-    desc: "בניית תרבות ארגונית בריאה בקבוצות ספורט, ניהול קונפליקטים, פיתוח מנהיגות ואחריות ספורטאים – לקחים מהמחקר ומהשטח.",
+    title: "לרוץ עם נעלי עקב",
+    desc: "האם נשים בספורט אי פעם תגענה לשוויון?",
   },
   {
     n: "04",
-    title: "אוהדים, זהות וקהילה",
-    audience: "חוקרים, אנשי תרבות, ארגוני ספורט",
-    desc: 'מחקר על קהילות אוהדי כדורגל בישראל ובאנגליה – מי הם, מה מניע אותם, ומה ניתן ללמוד מהם. מבוסס על ספר המחקר "אימפריה".',
+    title: "כולם ידעו ואף אחד לא עשה דבר",
+    desc: "אלימות של צוותי אימון בילדות ובילדים בספורט ההישגי.",
   },
 ];
 
@@ -53,10 +49,9 @@ export default function LecturesPage() {
               {topic.n}
             </span>
             <div className="md:flex-1">
-              <h3 className="font-bold text-[var(--color-ink)] text-xl mb-1 group-hover:text-[var(--color-accent)] transition-colors">
+              <h3 className="font-bold text-[var(--color-ink)] text-xl mb-2 group-hover:text-[var(--color-accent)] transition-colors">
                 {topic.title}
               </h3>
-              <p className="text-xs font-medium text-[var(--color-muted)] mb-3">קהל יעד: {topic.audience}</p>
               <p className="text-sm text-[var(--color-ink)]/80 leading-relaxed max-w-2xl">{topic.desc}</p>
             </div>
           </div>

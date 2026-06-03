@@ -73,12 +73,13 @@ collections:
             label_singular: ספר
             fields:
               - { label: "כותרת", name: title, widget: string }
-              - { label: "שנה", name: year, widget: string }
-              - { label: "תמונת עטיפה", name: image, widget: image }
+              - { label: "שנה", name: year, widget: string, required: false }
+              - { label: "תמונת עטיפה", name: image, widget: image, required: false }
               - { label: "תיאור", name: desc, widget: text }
-              - { label: "קטגוריה", name: tag, widget: select, options: ["מחקר ועיון", "ספר מחקר", "ספרי ספורט ומשחקים", "ספרי ילדים"] }
+              - { label: "קטגוריה", name: tag, widget: select, options: ["מחקר ועיון", "ספר מחקר", "ספרי ספורט ומשחקים", "ספרי ילדים", "אוטוביוגרפיה"] }
               - { label: "קריאה חינם?", name: free, widget: boolean, default: false, required: false }
               - { label: "קישור לקריאה חינם", name: freeUrl, widget: string, required: false }
+              - { label: "קישור לרכישה", name: buyUrl, widget: string, required: false }
 
   # ─── Press ─────────────────────────────────────────────────────────────────
   - name: press-data
