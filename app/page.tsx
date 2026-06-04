@@ -117,15 +117,20 @@ export default async function Home() {
           {/* Lectures – violence prevention */}
           <Link
             href="/lectures"
-            className="group relative rounded-md overflow-hidden min-h-72 flex flex-col justify-end bg-[var(--color-card)] border border-[var(--color-line)] hover:border-[var(--color-accent)] transition-colors"
+            className="group relative rounded-md overflow-hidden min-h-72 flex flex-col justify-end text-[var(--color-card)]"
           >
+            <div
+              className="absolute inset-0 bg-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              style={{ backgroundImage: "url('/images/lecture-alice.jpg')", backgroundPosition: "right center" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-accent)] via-[var(--color-accent)]/70 to-[var(--color-accent)]/10" />
             <div className="relative p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-accent)] mb-2">הרצאות</p>
-              <h2 className="text-3xl font-extrabold mb-2 text-[var(--color-ink)]">מניעת אלימות בספורט</h2>
-              <p className="text-[var(--color-muted)] text-base leading-relaxed mb-4 max-w-sm">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70 mb-2">הרצאות</p>
+              <h2 className="text-3xl font-extrabold mb-2">מניעת אלימות בספורט</h2>
+              <p className="text-white/80 text-base leading-relaxed mb-4 max-w-sm">
                 הרצאות מבוססות מחקר למאמנים, הורים וארגוני ספורט. כלים מעשיים לשינוי תרבות האימון.
               </p>
-              <span className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-accent)] group-hover:gap-2 transition-all">
+              <span className="inline-flex items-center gap-1 text-sm font-semibold group-hover:gap-2 transition-all">
                 לפרטים ולהזמנה <span aria-hidden>←</span>
               </span>
             </div>
