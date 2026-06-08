@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllSlugs, getPost } from "@/lib/posts";
 import { mdxComponents } from "@/components/mdx";
+import { jsonLd } from "@/lib/jsonld";
 import Link from "next/link";
 
 interface Props {
@@ -73,7 +74,7 @@ export default async function BlogPostPage({ params }: Props) {
     <div className="max-w-2xl mx-auto px-4 py-16">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(articleSchema) }}
       />
       <Link
         href="/blog"

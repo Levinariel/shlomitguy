@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllChapters } from "@/lib/imperia";
+import { jsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
   title: 'אימפריה | ד"ר שלומית גיא',
@@ -54,7 +55,7 @@ export default function ImperiaPage() {
     <div className="max-w-2xl mx-auto px-4 py-16">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(bookSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(bookSchema) }}
       />
       <Link
         href="/books"

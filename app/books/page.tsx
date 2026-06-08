@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import { getBooks } from "@/lib/data";
+import { jsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
   title: 'הוצאת רסיס נהרה | ד"ר שלומית גיא',
@@ -19,7 +20,7 @@ const bookSchemas = [
     datePublished: "2026",
     inLanguage: "he",
     image: "https://rasisnahara.netlify.app/images/book-koolam-yadoo.jpg",
-    description: "הספר מתעד 13 ראיונות עם ספורטאים ומציג את הספורטאי ההישגי, קורבן הזניחה והמאמנים המנצלים. מבוסס על מחקר עומק של 5 שנים (2020–2025) ו-27 ראיונות.",
+    description: "הספר מאגד 13 ראיונות עם ספורטאים וספורטאיות שחוו אלימות מצד המאמנים שלהם בספורט ההישגי. עדויות אלה מספקות מבט נדיר אל תרבות שמעדיפה הישגים על פני מוגנת.",
     genre: ["מחקר", "ספורט", "חברה"],
     url: "https://rasisnahara.netlify.app/books",
   },
@@ -33,7 +34,7 @@ const bookSchemas = [
     datePublished: "2010",
     inLanguage: "he",
     image: "https://rasisnahara.netlify.app/images/book-imperia.jpg",
-    description: "תיעוד שנת מחקר שטח בלונדון בין קהילות אוהדי כדורגל. הספר עוסק בזהות, שייכות ופנאטיות ספורטיבית. זכה בתואר ספר הספורט של השנה מטעם גלובס.",
+    description: "הספר מתעד שנת מחקר בכדורגל האנגלי תוך התמקדות בתהליכים המקצועיים באקדמיות ובקבוצות הבוגרים של מועדוני הכדורגל צ'לסי וארסנל.",
     genre: ["ספר מחקר", "אנתרופולוגיה", "ספורט"],
     url: "https://rasisnahara.netlify.app/books",
   },
@@ -45,8 +46,20 @@ const bookSchemas = [
     publisher: { "@type": "Organization", name: "הוצאת רסיס נהרה", url: "https://rasisnahara.netlify.app" },
     datePublished: "2022",
     inLanguage: "he",
-    image: "https://rasisnahara.netlify.app/images/book-lo-trivialit.jpg",
+    image: "https://rasisnahara.netlify.app/images/book-lo-triviali.jpg",
     description: "משחק טריוויה ייחודי על ספורט וחברה – 207 שאלות מרתקות שחוצות את גבולות ספורט ונוגעות בחיים עצמם.",
+    genre: ["ספרי ספורט ומשחקים"],
+    url: "https://rasisnahara.netlify.app/books",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    name: "לא טריוויאלית",
+    author: { "@type": "Person", name: "ד\"ר שלומית גיא", url: "https://rasisnahara.netlify.app/about" },
+    publisher: { "@type": "Organization", name: "הוצאת רסיס נהרה", url: "https://rasisnahara.netlify.app" },
+    inLanguage: "he",
+    image: "https://rasisnahara.netlify.app/images/book-lo-trivialit.jpg",
+    description: "משחק טריוויה שנותן כבוד לספורטאיות, מאמנות ומנהלת בספורט בישראל ובעולם.",
     genre: ["ספרי ספורט ומשחקים"],
     url: "https://rasisnahara.netlify.app/books",
   },
@@ -59,7 +72,7 @@ export default function BooksPage() {
     <div className="max-w-5xl mx-auto px-4 py-16">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(bookSchemas) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(bookSchemas) }}
       />
       {/* Publishing house hero */}
       <div className="mb-14 rounded-md overflow-hidden relative bg-[var(--color-accent)] text-[var(--color-card)]">
@@ -91,7 +104,9 @@ export default function BooksPage() {
               <img
                 src={book.image}
                 alt={book.title}
-                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                className={`w-full h-full ${
+                  book.coverFit === "contain" ? "object-contain" : "object-cover"
+                } transition-transform duration-500 ease-out group-hover:scale-[1.04]`}
               />
             </div>
           ) : (
@@ -158,7 +173,7 @@ export default function BooksPage() {
       <div className="mt-16 bg-[var(--color-surface)] rounded-md p-8 text-center border border-[var(--color-line)]">
         <p className="text-[var(--color-ink)] font-bold text-lg mb-2">יש לכם ספר לפרסם?</p>
         <p className="text-sm text-[var(--color-muted)] mb-5">
-          אם אתם בשלבי כתיבה או שכבר יש ספר מוכן – צרו קשר. אנחנו נועד לכם לטובת הוצאתו לאור.
+          אם אתם בשלבי כתיבה או שכבר יש ספר מוכן – צרו קשר אנחנו נלווה אתכם ואתכן משלב הכתיבה ועד השיווק.
         </p>
         <a
           href="/contact"

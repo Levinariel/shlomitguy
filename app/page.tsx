@@ -96,19 +96,14 @@ export default async function Home() {
           <Link
             href="/books"
             className="group relative rounded-md overflow-hidden min-h-72 flex flex-col justify-end text-[var(--color-card)]"
+            style={{ backgroundColor: "#915ba0" }}
           >
             <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-              style={{ backgroundImage: "url('/images/book_hootza_mehekshero.jpg')" }}
+              className="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+              style={{ backgroundImage: "url('/images/rasis-nahara-logo.jpg')" }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-accent)] via-[var(--color-accent)]/70 to-[var(--color-accent)]/10" />
             <div className="relative p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70 mb-2">הוצאת ספרים</p>
-              <h2 className="text-3xl font-extrabold mb-2">רסיס נהרה</h2>
-              <p className="text-white/80 text-base leading-relaxed mb-4 max-w-sm">
-                הוצאת בוטיק המתמחה בספרי ספורט וילדים. אחד עשר ספרים פורצי דרך — מחקר, עיון וספרות ילדים.
-              </p>
-              <span className="inline-flex items-center gap-1 text-sm font-semibold group-hover:gap-2 transition-all">
+              <span className="inline-flex items-center gap-1 text-sm font-semibold drop-shadow-sm group-hover:gap-2 transition-all">
                 לכל הספרים <span aria-hidden>←</span>
               </span>
             </div>
