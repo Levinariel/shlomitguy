@@ -43,11 +43,20 @@ export default function ContactForm() {
           name="contact"
           method="POST"
           data-netlify="true"
+          data-netlify-honeypot="bot-field"
           onSubmit={handleSubmit}
           className="space-y-5"
         >
           {/* Hidden field required for Netlify Forms */}
           <input type="hidden" name="form-name" value="contact" />
+
+          {/* Honeypot: hidden from humans; bots that fill it get silently dropped */}
+          <p className="hidden" aria-hidden="true">
+            <label>
+              אל תמלאו שדה זה:{" "}
+              <input name="bot-field" tabIndex={-1} autoComplete="off" />
+            </label>
+          </p>
 
           <div>
             <label htmlFor="name" className="block text-sm font-semibold text-[var(--color-fg)] mb-1.5">

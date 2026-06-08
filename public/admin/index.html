@@ -8,6 +8,19 @@
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <!--
+      Pinned to an exact version + Subresource Integrity hash. This script runs
+      inside the authenticated CMS session with write access to the repo, so a
+      floating "^3.0.0" range against a third-party CDN would be a supply-chain
+      risk: any compromised/updated build would execute here. SRI makes the
+      browser reject the file if its bytes don't match the expected hash.
+      To upgrade: bump the version and regenerate the hash with
+        curl -sL https://unpkg.com/decap-cms@<ver>/dist/decap-cms.js | openssl dgst -sha384 -binary | openssl base64 -A
+    -->
+    <script
+      src="https://unpkg.com/decap-cms@3.13.0/dist/decap-cms.js"
+      integrity="sha384-b2DmwsXpZQ2CPGJ1kUDcjyT/hcDlqm4tTsGzhqhEAbF1SFcE/9FgNpEcqDaLNqE0"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

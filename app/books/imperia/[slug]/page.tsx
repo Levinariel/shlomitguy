@@ -4,6 +4,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { getAllChapterSlugs, getChapter, getChapterNeighbors } from "@/lib/imperia";
 import { mdxComponents } from "@/components/mdx";
+import { jsonLd } from "@/lib/jsonld";
 
 const BASE = "https://rasisnahara.netlify.app";
 
@@ -64,7 +65,7 @@ export default async function ChapterPage({ params }: Props) {
     <div className="max-w-2xl mx-auto px-4 py-16">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([chapterSchema, breadcrumb]) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd([chapterSchema, breadcrumb]) }}
       />
       <Link
         href="/books/imperia"

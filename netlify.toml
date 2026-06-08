@@ -2,6 +2,23 @@
   command = "npm run build"
   publish = "out"
 
+# Global security headers for every response.
+# Note: the CSP here is intentionally a safe subset (clickjacking + base-uri +
+# object-src). It does NOT set script-src/style-src, so it cannot break inline
+# Next.js bootstrap scripts, Tailwind styles, or the Netlify Identity widget.
+# A full script-src/style-src CSP is a worthwhile follow-up but must be tested
+# against the live CMS auth flow before shipping.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Content-Security-Policy = "frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+
+# The CMS editor renders previews in a same-origin iframe, so it needs to allow
+# being framed by itself (overrides the global DENY for this path only).
 [[headers]]
   for = "/admin/*"
   [headers.values]

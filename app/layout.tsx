@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { jsonLd } from "@/lib/jsonld";
 
 const assistant = Assistant({
   subsets: ["hebrew", "latin"],
@@ -116,10 +117,11 @@ export default function RootLayout({
     <html lang="he" dir="rtl" className={assistant.variable}>
       <body className="min-h-screen flex flex-col bg-[var(--color-bg)] text-[var(--color-fg)]">
         {/* Hidden form – lets Netlify detect the contact form at build time */}
-        <form name="contact" data-netlify="true" hidden>
+        <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
           <input name="name" />
           <input name="email" />
           <input name="subject" />
+          <input name="bot-field" />
           <textarea name="message" />
         </form>
         <Header />
@@ -128,7 +130,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([personSchema, organizationSchema, websiteSchema]),
+            __html: jsonLd([personSchema, organizationSchema, websiteSchema]),
           }}
         />
         <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" strategy="afterInteractive" />
