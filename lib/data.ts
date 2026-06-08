@@ -13,6 +13,7 @@ export interface Book {
   freeUrl?: string;
   page?: string;
   buyUrl?: string;
+  coverFit?: "cover" | "contain";
 }
 
 export interface PressItem {
